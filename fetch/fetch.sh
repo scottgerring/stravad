@@ -1,6 +1,9 @@
 #!/bin/bash
 
 set -e 
+set -a 
+
+source ./env.sh
 
 TARGET_DIR=/tiles/
 

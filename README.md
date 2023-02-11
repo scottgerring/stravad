@@ -64,11 +64,17 @@ EOF
 # Create a secret for the mapbox credentials
 kubectl -n stravad create secret generic mapbox-credentials --from-env-file=frontend/.env
 
+# Fetch a refresh token for strava. You'll need to plug
+# the response in further down!
+export STRAVA_CLIENT_ID=123
+export STRAVA_CLIENT_SECRET=00aabbccddee
+ruby fetch/fetchAccessToken.rb
+
 # Create an `env.sh` in `fetch` to specify strava access credentials:
 cat > fetch/env.sh << EOF
-STRAVA_CLIENT_ID="2345
-STRAVA_CLIENT_SECRET="00aabbccddee"
-STRAVA_REFRESH_TOKEN="eeffaabbccdd"
+STRAVA_CLIENT_ID=$STRAVA_CLIENT_ID
+STRAVA_CLIENT_SECRET=$STRAVA_CLIENT_SECRET
+STRAVA_REFRESH_TOKEN=eeffaabbccdd
 EOF
 
 # Create the namespace
