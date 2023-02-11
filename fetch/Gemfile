@@ -1,0 +1,5 @@
+source "https://rubygems.org"
+
+ruby "3.0"
+gem "polylines", "=0.3.0"
+gem "strava-ruby-client", git: 'https://github.com/dblock/strava-ruby-client.git', :ref => "22a3500"

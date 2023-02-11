@@ -1,0 +1,9 @@
+div#root, .App, #mapContainer, html, body {
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+}
+
+.formControl {
+    width: 150px;
+}

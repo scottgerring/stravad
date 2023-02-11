@@ -1,0 +1,116 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: stravad 
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: stravad-tiles
+  namespace: stravad
+  labels:
+    app: stravad
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/tank/appdata/stravad"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: stravad-tiles-claim
+  namespace: stravad
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stravad
+  namespace: stravad
+  labels:
+    app: stravad
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stravad
+  template:
+    metadata:
+      labels:
+        app: stravad
+    spec:
+      volumes:
+        - name: stravad-tiles
+          persistentVolumeClaim:
+            claimName: stravad-tiles-claim    
+      containers:
+      - name: stravad
+        image: ghcr.io/scottgerring/stravad-frontend:v0.0.5
+        envFrom:
+          - secretRef:
+              name: mapbox-credentials
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            cpu: "500m"
+            memory: "128Mi"
+        volumeMounts: 
+          - mountPath: /usr/share/nginx/html/tiles/
+            name: stravad-tiles            
+            
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: stravad
+  namespace: stravad
+  labels:
+    app: stravad
+spec:
+  selector:
+    app: stravad
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      name: web
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: stravad-scrape
+  namespace: stravad
+spec:
+  schedule: "1 1 * * *" # Run daily 
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          volumes:
+            - name: stravad-tiles
+              persistentVolumeClaim:
+                claimName: stravad-tiles-claim
+          containers:
+          - name: stravad-scrape
+            image: ghcr.io/scottgerring/stravad-scrape:v0.0.5
+            imagePullPolicy: IfNotPresent
+            #command: ["/usr/bin/env"]
+            volumeMounts: 
+              - mountPath: /tiles
+                name: stravad-tiles
+            envFrom:
+              - secretRef:
+                  name: strava-credentials
+          restartPolicy: OnFailure

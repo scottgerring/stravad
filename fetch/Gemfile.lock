@@ -1,0 +1,48 @@
+GIT
+  remote: https://github.com/dblock/strava-ruby-client.git
+  revision: 22a3500baa6262d482ddee1efe512dd5691677c6
+  ref: 22a3500
+  specs:
+    strava-ruby-client (2.0.0)
+      activesupport
+      faraday (>= 2.0)
+      faraday-multipart (>= 1.0)
+      hashie
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    activesupport (7.0.4.2)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      i18n (>= 1.6, < 2)
+      minitest (>= 5.1)
+      tzinfo (~> 2.0)
+    concurrent-ruby (1.2.0)
+    faraday (2.7.4)
+      faraday-net_http (>= 2.0, < 3.1)
+      ruby2_keywords (>= 0.0.4)
+    faraday-multipart (1.0.4)
+      multipart-post (~> 2)
+    faraday-net_http (3.0.2)
+    hashie (5.0.0)
+    i18n (1.12.0)
+      concurrent-ruby (~> 1.0)
+    minitest (5.17.0)
+    multipart-post (2.3.0)
+    polylines (0.3.0)
+    ruby2_keywords (0.0.5)
+    tzinfo (2.0.5)
+      concurrent-ruby (~> 1.0)
+
+PLATFORMS
+  x86_64-darwin-21
+
+DEPENDENCIES
+  polylines (= 0.3.0)
+  strava-ruby-client!
+
+RUBY VERSION
+   ruby 3.0.0p0
+
+BUNDLED WITH
+   2.2.3
