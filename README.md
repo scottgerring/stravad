@@ -70,6 +70,7 @@ export STRAVA_CLIENT_ID=123
 export STRAVA_CLIENT_SECRET=00aabbccddee
 cd fetch
 ./fetch-token-with-docker.sh
+cd ..
 
 # Create an `env.sh` in `fetch` to specify strava access credentials:
 cat > fetch/env.sh << EOF
