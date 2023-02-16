@@ -24,7 +24,7 @@ authUrl = "https://www.strava.com/oauth/authorize?" +
 "client_id=#{@clientId}" + 
 "&response_type=code&redirect_uri=http://localhost&scope=view_private&state=mystate&approval_prompt=force&scope=activity:read_all";
 puts authUrl
-puts "Provide the response code: "
+puts "Provide the response code from the 'code' parameter of the redirected URL: "
 clientCode = Readline.readline()
 puts "Retrieving access token from client code '#{clientCode}'"
 @auth = client.oauth_token(code: clientCode)

@@ -17,5 +17,5 @@ docker run \
     -e STRAVA_CLIENT_SECRET \
     -e STRAVA_REFRESH_TOKEN \
     --mount type=bind,source="$(pwd)"/testdata/,target=/tiles/ \
-    ghcr.io/scottgerring/stravad-scrape:v0.0.3
+    stravad-fetch
     #stravad-fetch

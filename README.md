@@ -68,7 +68,8 @@ kubectl -n stravad create secret generic mapbox-credentials --from-env-file=fron
 # the response in further down!
 export STRAVA_CLIENT_ID=123
 export STRAVA_CLIENT_SECRET=00aabbccddee
-ruby fetch/fetchAccessToken.rb
+cd fetch
+./fetch-token-with-docker.sh
 
 # Create an `env.sh` in `fetch` to specify strava access credentials:
 cat > fetch/env.sh << EOF
