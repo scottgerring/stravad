@@ -10,10 +10,18 @@ _Easily visualize and explore your strava activities in glorious vectorized 3D_
   </tr>
   <tr>
     <td><img src="docs/topo.jpg" width=400 ></td>
-    <td><img src="docs/satellite.jpg" width=400 ></td>
+    <td><img src="docs/satellite.jpg" width=400 ></td>    
   </tr>
+  <tr>
+    <td>
+    </td>
  </table>
+ 
+<details>
+<summary>Video demo</summary>
 
+ [stravad-demo.webm](https://user-images.githubusercontent.com/474021/231122652-7a334ba5-e0f3-443c-b8e6-30de4190539f.webm)
+</details>
 
 ## What is it?
 
