@@ -107,6 +107,7 @@ class Filter extends Component<IProps> {
                             <MenuItem value="2021">2021</MenuItem> 
                             <MenuItem value="2022">2022</MenuItem>
                             <MenuItem value="2023">2023</MenuItem> 
+                            <MenuItem value="2024">2024</MenuItem>                             
                         </Select> 
                     </FormControl>
                 </ListItem>
@@ -130,6 +131,7 @@ class Filter extends Component<IProps> {
                             <MenuItem value="2021">2021</MenuItem> 
                             <MenuItem value="2022">2022</MenuItem>
                             <MenuItem value="2023">2023</MenuItem> 
+                            <MenuItem value="2024">2024</MenuItem> 
                         </Select>   
                     </FormControl>                           
                     {/* <Button onClick={() => this.offsetYear.bind(this)(1)}>&gt;</Button> */}
